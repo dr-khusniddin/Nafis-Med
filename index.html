@@ -23,24 +23,64 @@
     </div>
     <div class="nav">
         <div class="container nav-links">
-            <a href="#main" data-ru="🏠 Главная" data-uz="🏠 Bosh sahifa">🏠 Главная</a>
+            <a href="#appointment" data-ru="📝 Запись на прием" data-uz="📝 Yozilish">📝 Запись на прием</a>
             <a href="#price" data-ru="📋 Прайс-лист" data-uz="📋 Narxlar">📋 Прайс-лист</a>
             <a href="#doctors" data-ru="👨‍⚕️ Наши врачи" data-uz="👨‍⚕️ Shifokorlar">👨‍⚕️ Наши врачи</a>
-            <a href="#appointment" data-ru="📝 Запись на прием" data-uz="📝 Yozilish">📝 Запись на прием</a>
         </div>
     </div>
 </div>
 
 <div class="container">
-    <!-- ГЛАВНАЯ СЕКЦИЯ -->
-    <div id="main" class="section hero">
-        <h2 class="lang-dependent" data-ru="Добро пожаловать в Nafis Med" data-uz="Nafis Med ga xush kelibsiz">Добро пожаловать в Nafis Med</h2>
-        <p class="lang-dependent" data-ru="Современный медицинский центр с передовыми технологиями лечения и диагностики" data-uz="Ilg'or davolash va diagnostika texnologiyalariga ega zamonaviy tibbiyot markazi">Современный медицинский центр с передовыми технологиями лечения и диагностики</p>
-        <div class="hero-stats">
-            <div class="stat"><span>7+</span> <span data-ru="Врачей" data-uz="Shifokor">Врачей</span></div>
-            <div class="stat"><span>200+</span> <span data-ru="Анализов" data-uz="Tahlil">Анализов</span></div>
-            <div class="stat"><span>24/7</span> <span data-ru="Поддержка" data-uz="Qo'llab-quvvatlash">Поддержка</span></div>
-        </div>
+    <!-- СЕКЦИЯ ЗАПИСЬ (ТЕПЕРЬ ПЕРВАЯ) -->
+    <div id="appointment" class="section">
+        <h2 class="section-title lang-dependent" data-ru="📝 Запись на прием" data-uz="📝 Qabulga yozilish">📝 Запись на прием</h2>
+        <form id="appointmentForm">
+            <div class="form-group">
+                <label data-ru="👤 Ваше имя" data-uz="👤 Ismingiz">👤 Ваше имя</label>
+                <input type="text" id="name" required placeholder="Например: Алишер">
+            </div>
+            <div class="form-group">
+                <label data-ru="📞 Номер телефона" data-uz="📞 Telefon raqamingiz">📞 Номер телефона</label>
+                <input type="tel" id="phone" required placeholder="+998 99 123 45 67">
+            </div>
+            <div class="form-group">
+                <label data-ru="🔄 Какой это прием?" data-uz="🔄 Nechanchi qabul?">🔄 Какой это прием?</label>
+                <select id="visitCountSelect" required>
+                    <option value="1" data-ru="1-й прием (первичный)" data-uz="1-qabul (birlamchi)">1-й прием (первичный)</option>
+                    <option value="2" data-ru="2-й прием (повторный)" data-uz="2-qabul (takroriy)">2-й прием (повторный)</option>
+                    <option value="3" data-ru="3-й прием" data-uz="3-qabul">3-й прием</option>
+                    <option value="4" data-ru="4-й прием" data-uz="4-qabul">4-й прием</option>
+                    <option value="5" data-ru="5-й прием" data-uz="5-qabul">5-й прием</option>
+                    <option value="6+" data-ru="6 и более" data-uz="6 va undan ko'p">6 и более</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label data-ru="👨‍⚕️ Выберите врача" data-uz="👨‍⚕️ Shifokorni tanlang">👨‍⚕️ Выберите врача</label>
+                <select id="doctorSelect" required>
+                    <option value="">-- Выберите врача --</option>
+                    <option value="Мадаминова Нилуфар (Терапевт)">Мадаминова Нилуфар (Терапевт)</option>
+                    <option value="Иминов Комилжон (Челюстно-лицевой хирург)">Иминов Комилжон (Челюстно-лицевой хирург)</option>
+                    <option value="Хаитов Ойбек (Пластический хирург)">Хаитов Ойбек (Пластический хирург)</option>
+                    <option value="Рахматуллаев Хусниддин (Хирург)">Рахматуллаев Хусниддин (Хирург)</option>
+                    <option value="Мансуров Авазбек (Стоматолог)">Мансуров Авазбек (Стоматолог)</option>
+                    <option value="Намозова Гуласал (Хирург-ассистент)">Намозова Гуласал (Хирург-ассистент)</option>
+                    <option value="Исабаева Зульфия (Хирург-ассистент)">Исабаева Зульфия (Хирург-ассистент)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label data-ru="📅 Выберите дату" data-uz="📅 Sanani tanlang">📅 Выберите дату</label>
+                <input type="date" id="datePicker" required>
+                <div id="slotsInfo" class="slots-info"></div>
+            </div>
+            <div class="form-group">
+                <label data-ru="⏰ Выберите время" data-uz="⏰ Vaqtni tanlang">⏰ Выберите время</label>
+                <select id="timeSelect" required>
+                    <option value="">-- Сначала выберите дату --</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit" data-ru="📨 Записаться на прием" data-uz="📨 Qabulga yozilish">📨 Записаться на прием</button>
+            <div id="formMessage" class="form-message"></div>
+        </form>
     </div>
 
     <!-- СЕКЦИЯ ПРАЙС-ЛИСТ (ВКЛАДКИ) -->
@@ -66,16 +106,17 @@
                     <div class="price-row"><span>PRP-терапия тазобедренного сустава (оба)</span><span>1 300 000 сум</span></div>
                     <div class="price-row"><span>PRP-терапия тазобедренного сустава (1 сторона)</span><span>700 000 сум</span></div>
                     <div class="price-row"><span>PRP-терапия в ВНЧС (1 сторона)</span><span>800 000 сум</span></div>
-                    <div class="price-row"><span>Plazma</span><span>500 000 so'm</span></div>
+                    <div class="price-row"><span>Плазма</span><span>300 000 сум</span></div>
                 </div>
             </div>
             <div class="price-category">
                 <div class="category-name">👨‍⚕️ Консультации специалистов</div>
                 <div class="price-table">
-                    <div class="price-row"><span>Dr. Iminov konsultatsiyasi</span><span>200 000 so'm</span></div>
-                    <div class="price-row"><span>Dr. Madaminova konsultatsiyasi</span><span>150 000 so'm</span></div>
-                    <div class="price-row"><span>Dr. Xaitov konsultatsiyasi</span><span>100 000 so'm</span></div>
-                    <div class="price-row"><span>Dr. Raxmatullayev konsultatsiyasi</span><span>100 000 so'm</span></div>
+                    <div class="price-row"><span>Dr. Komiljon</span><span>200 000 so'm</span></div>
+                    <div class="price-row"><span>Dr. Nilufar</span><span>150 000 so'm</span></div>
+                    <div class="price-row"><span>Dr. Oybek</span><span>100 000 so'm</span></div>
+                    <div class="price-row"><span>Dr. Khusniddin</span><span>100 000 so'm</span></div>
+                    <div class="price-row"><span>Dr. Avazbek</span><span>100 000 so'm</span></div>
                 </div>
             </div>
         </div>
@@ -118,7 +159,6 @@
                     <div class="price-row"><span>Время свёртывания (ВСК)</span><span>40 000 сум</span></div>
                     <div class="price-row"><span>Группа крови АВО + резус фактор</span><span>70 000 сум</span></div>
                     <div class="price-row"><span>Антирезусные антитела</span><span>200 000 сум</span></div>
-                    <div class="price-row"><span>Гликированный гемоглобин</span><span>90 000 сум</span></div>
                 </div>
             </div>
             <div class="price-category">
@@ -127,7 +167,6 @@
                     <div class="price-row"><span>Общий анализ мочи (OAM)</span><span>50 000 сум</span></div>
                     <div class="price-row"><span>Анализ мочи по Зимницкому</span><span>50 000 сум</span></div>
                     <div class="price-row"><span>Моча по Нечипоренко</span><span>50 000 сум</span></div>
-                    <div class="price-row"><span>Посев мочи</span><span>120 000 сум</span></div>
                 </div>
             </div>
             <div class="price-category">
@@ -139,26 +178,8 @@
                     <div class="price-row"><span>Креатинин в крови</span><span>40 000 сум</span></div>
                     <div class="price-row"><span>Мочевина в крови</span><span>40 000 сум</span></div>
                     <div class="price-row"><span>Общий белок</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Общий билирубин</span><span>40 000 сум</span></div>
-                    <div class="price-row"><span>Билирубин прямой</span><span>40 000 сум</span></div>
-                    <div class="price-row"><span>Щелочная фосфатаза (ALP)</span><span>40 000 сум</span></div>
-                    <div class="price-row"><span>Панкреатическая амилаза</span><span>40 000 сум</span></div>
+                    <div class="price-row"><span>Билирубин общий</span><span>40 000 сум</span></div>
                     <div class="price-row"><span>C-реактивный белок (CRP)</span><span>70 000 сум</span></div>
-                    <div class="price-row"><span>Тест на толерантность к глюкозе</span><span>45 000 сум</span></div>
-                </div>
-            </div>
-            <div class="price-category">
-                <div class="category-name">⚡ Липидный спектр и электролиты</div>
-                <div class="price-table">
-                    <div class="price-row"><span>Триглицериды (TG)</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Холестерол общий (TC)</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Липидный спектр (5 показателей)</span><span>200 000 сум</span></div>
-                    <div class="price-row"><span>Натрий (Na)</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Калий (K)</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Кальций (Ca)</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Магний</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Хлор</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Железо</span><span>95 000 сум</span></div>
                 </div>
             </div>
             <div class="price-category">
@@ -166,13 +187,9 @@
                 <div class="price-table">
                     <div class="price-row"><span>Гепатит В (HbsAg)</span><span>45 000 сум</span></div>
                     <div class="price-row"><span>Гепатит С (Anti-HCV)</span><span>45 000 сум</span></div>
-                    <div class="price-row"><span>Гепатит А</span><span>140 000 сум</span></div>
                     <div class="price-row"><span>Сифилис (RW)</span><span>40 000 сум</span></div>
                     <div class="price-row"><span>ВИЧ 1+2 (HIV)</span><span>40 000 сум</span></div>
                     <div class="price-row"><span>COVID-19 (экспресс-тест)</span><span>80 000 сум</span></div>
-                    <div class="price-row"><span>COVID IgG/IgM</span><span>140 000 сум</span></div>
-                    <div class="price-row"><span>Интерлейкин 6</span><span>130 000 сум</span></div>
-                    <div class="price-row"><span>IgE (общий аллергофон)</span><span>100 000 сум</span></div>
                 </div>
             </div>
             <div class="price-category">
@@ -182,59 +199,20 @@
                     <div class="price-row"><span>T3 (трийодтиронин)</span><span>100 000 сум</span></div>
                     <div class="price-row"><span>T4 (тироксин)</span><span>100 000 сум</span></div>
                     <div class="price-row"><span>Пролактин</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>ЛГ (лютеинизирующий гормон)</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>Кортизол</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>Инсулин</span><span>100 000 сум</span></div>
                     <div class="price-row"><span>Тестостерон</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>Эстроген</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>ПСА свободный (f-PSA)</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>ХГЧ (хорионический гонадотропин)</span><span>100 000 сум</span></div>
                     <div class="price-row"><span>Витамин D</span><span>180 000 сум</span></div>
-                </div>
-            </div>
-            <div class="price-category">
-                <div class="category-name">🩸 Коагулограмма</div>
-                <div class="price-table">
-                    <div class="price-row"><span>Коагулограмма (5 показателей)</span><span>170 000 сум</span></div>
-                    <div class="price-row"><span>Коагулограмма (6 показателей)</span><span>180 000 сум</span></div>
-                    <div class="price-row"><span>D-димер</span><span>130 000 сум</span></div>
-                    <div class="price-row"><span>Фибриноген</span><span>50 000 сум</span></div>
-                    <div class="price-row"><span>Протромбиновый комплекс (ПТИ+протромбин+МНО)</span><span>50 000 сум</span></div>
-                    <div class="price-row"><span>АЧТВ</span><span>40 000 сум</span></div>
-                </div>
-            </div>
-            <div class="price-category">
-                <div class="category-name">🪱 Паразитарные инфекции</div>
-                <div class="price-table">
-                    <div class="price-row"><span>Анализ крови на аскариды</span><span>85 000 сум</span></div>
-                    <div class="price-row"><span>Анализ крови на лямблии</span><span>85 000 сум</span></div>
-                    <div class="price-row"><span>H.pylori (Хеликобактер)</span><span>80 000 сум</span></div>
-                    <div class="price-row"><span>Ревмопроба (RF, CRP, ASLO)</span><span>150 000 сум</span></div>
-                    <div class="price-row"><span>Коклюш</span><span>160 000 сум</span></div>
-                    <div class="price-row"><span>Ферритин</span><span>130 000 сум</span></div>
                 </div>
             </div>
             <div class="price-category">
                 <div class="category-name">⚕️ Процедуры и манипуляции</div>
                 <div class="price-table">
-                    <div class="price-row"><span>ЭКГ</span><span>70 000 сум</span></div>
                     <div class="price-row"><span>ЭКГ с расшифровкой</span><span>100 000 сум</span></div>
-                    <div class="price-row"><span>ЭКГ "NEBU"</span><span>150 000 сум</span></div>
                     <div class="price-row"><span>УЗИ (каждый орган)</span><span>150 000 сум</span></div>
                     <div class="price-row"><span>Физиотерапия (1 сеанс)</span><span>35 000 сум</span></div>
                     <div class="price-row"><span>Внутривенная инъекция (струйно)</span><span>25 000 сум</span></div>
-                    <div class="price-row"><span>Внутривенная капельница (1 флакон, до 1 часа)</span><span>35 000 сум</span></div>
-                    <div class="price-row"><span>Внутривенная капельница (более 1 часа)</span><span>50 000 сум</span></div>
-                    <div class="price-row"><span>Внутримышечная инъекция (с пробой)</span><span>30 000 сум</span></div>
-                    <div class="price-row"><span>Внутримышечная инъекция "Бициллин"</span><span>30 000 сум</span></div>
-                    <div class="price-row"><span>Подкожная инъекция</span><span>25 000 сум</span></div>
-                    <div class="price-row"><span>Измерение артериального давления</span><span>15 000 сум</span></div>
-                    <div class="price-row"><span>Забор крови</span><span>30 000 сум</span></div>
+                    <div class="price-row"><span>Внутривенная капельница</span><span>35 000 сум</span></div>
                     <div class="price-row"><span>Перевязка (простая)</span><span>35 000 сум</span></div>
                     <div class="price-row"><span>Перевязка (сложная)</span><span>50 000 сум</span></div>
-                    <div class="price-row"><span>Лечение ран плазмой</span><span>500 000 сум</span></div>
-                    <div class="price-row"><span>Вросший ноготь (удаление)</span><span>200 000 сум</span></div>
-                    <div class="price-row"><span>Сложное удаление ногтя</span><span>300 000 сум</span></div>
                 </div>
             </div>
         </div>
@@ -243,8 +221,10 @@
             <div class="price-category">
                 <div class="category-name">📋 Дополнительные услуги</div>
                 <div class="price-table">
-                    <div class="price-row"><span>Консультации специалистов</span><span>от 100 000 сум</span></div>
                     <div class="price-row"><span>Повторный прием (в течение 5 дней)</span><span>0 сум</span></div>
+                    <div class="price-row"><span>Измерение артериального давления</span><span>15 000 сум</span></div>
+                    <div class="price-row"><span>Стоматологические услуги</span><span>от 150 000 сум</span></div>
+                    <div class="price-row"><span>Вросший ноготь (удаление)</span><span>200 000 сум</span></div>
                 </div>
             </div>
         </div>
@@ -256,43 +236,18 @@
         <h2 class="section-title lang-dependent" data-ru="👨‍⚕️ Наши специалисты" data-uz="👨‍⚕️ Bizning mutaxassislar">👨‍⚕️ Наши специалисты</h2>
         <div class="doctors-grid">
             <div class="doctor-card"><div class="doctor-name">Мадаминова Нилуфар Рустамбаевна</div><div class="doctor-spec lang-dependent" data-ru="Терапевт, стаж 21 год" data-uz="Terapevt, 21 yillik tajriba">Терапевт, стаж 21 год</div></div>
-            <div class="doctor-card"><div class="doctor-name">Мадаминова Нилуфар Рустамбаевна</div><div class="doctor-spec lang-dependent" data-ru="Врач-УЗИ, стаж 8 лет" data-uz="UTT-shifokori, 8 yillik tajriba">Врач-УЗИ, стаж 8 лет</div></div>
             <div class="doctor-card"><div class="doctor-name">Иминов Комилжон Одилжонович</div><div class="doctor-spec lang-dependent" data-ru="Челюстно-лицевой хирург, стаж 12 лет" data-uz="Yuz-jag' jarroxi, 12 yillik tajriba">Челюстно-лицевой хирург, стаж 12 лет</div></div>
             <div class="doctor-card"><div class="doctor-name">Хаитов Ойбек Зафарович</div><div class="doctor-spec lang-dependent" data-ru="Пластический хирург, стаж 6 лет" data-uz="Plastik jarroh, 6 yillik tajriba">Пластический хирург, стаж 6 лет</div></div>
             <div class="doctor-card"><div class="doctor-name">Рахматуллаев Хусниддин Тожимуродович</div><div class="doctor-spec lang-dependent" data-ru="Хирург, стаж 6 лет" data-uz="Jarroh, 6 yillik tajriba">Хирург, стаж 6 лет</div></div>
+            <div class="doctor-card"><div class="doctor-name">Мансуров Авазбек Толибжонович</div><div class="doctor-spec lang-dependent" data-ru="Стоматолог, стаж 6 лет" data-uz="Stomatolog, 6 yillik tajriba">Стоматолог, стаж 6 лет</div></div>
             <div class="doctor-card"><div class="doctor-name">Намозова Гуласал Касимовна</div><div class="doctor-spec lang-dependent" data-ru="Хирург-ассистент, стаж 1 год" data-uz="Jarroh-assistent, 1 yillik tajriba">Хирург-ассистент, стаж 1 год</div></div>
             <div class="doctor-card"><div class="doctor-name">Исабаева Зульфия Журабек кизи</div><div class="doctor-spec lang-dependent" data-ru="Хирург-ассистент" data-uz="Jarroh-assistent">Хирург-ассистент</div></div>
         </div>
         <div class="doctor-card admin-card"><div class="doctor-name lang-dependent" data-ru="📞 Администратор / Запись" data-uz="📞 Administrator / Yozilish">📞 Администратор / Запись</div><div class="doctor-contact">📞 <a href="tel:+998909797510">+998 90 979 75 10</a></div></div>
     </div>
-
-    <!-- СЕКЦИЯ ЗАПИСЬ -->
-    <div id="appointment" class="section">
-        <h2 class="section-title lang-dependent" data-ru="📝 Запись на прием" data-uz="📝 Qabulga yozilish">📝 Запись на прием</h2>
-        <form id="appointmentForm">
-            <div class="form-group"><label data-ru="👤 Ваше имя" data-uz="👤 Ismingiz">👤 Ваше имя</label><input type="text" id="name" required placeholder="Например: Алишер"></div>
-            <div class="form-group"><label data-ru="📞 Номер телефона" data-uz="📞 Telefon raqamingiz">📞 Номер телефона</label><input type="tel" id="phone" required placeholder="+998 99 123 45 67"></div>
-            <div class="form-group"><label data-ru="👨‍⚕️ Выберите врача" data-uz="👨‍⚕️ Shifokorni tanlang">👨‍⚕️ Выберите врача</label>
-                <select id="doctorSelect" required>
-                    <option value="">-- Выберите врача --</option>
-                    <option value="Мадаминова Нилуфар (Терапевт)">Мадаминова Нилуфар (Терапевт)</option>
-                    <option value="Мадаминова Нилуфар (УЗИ)">Мадаминова Нилуфар (УЗИ)</option>
-                    <option value="Иминов Комилжон (Челюстно-лицевой хирург)">Иминов Комилжон (Челюстно-лицевой хирург)</option>
-                    <option value="Хаитов Ойбек (Пластический хирург)">Хаитов Ойбек (Пластический хирург)</option>
-                    <option value="Рахматуллаев Хусниддин (Хирург)">Рахматуллаев Хусниддин (Хирург)</option>
-                    <option value="Намозова Гуласал (Хирург-ассистент)">Намозова Гуласал (Хирург-ассистент)</option>
-                    <option value="Исабаева Зульфия (Хирург-ассистент)">Исабаева Зульфия (Хирург-ассистент)</option>
-                </select>
-            </div>
-            <div class="form-group"><label data-ru="📅 Выберите дату" data-uz="📅 Sanani tanlang">📅 Выберите дату</label><input type="date" id="datePicker" required><div id="slotsInfo" class="slots-info"></div></div>
-            <div class="form-group"><label data-ru="⏰ Выберите время" data-uz="⏰ Vaqtni tanlang">⏰ Выберите время</label><select id="timeSelect" required><option value="">-- Сначала выберите дату --</option></select></div>
-            <button type="submit" class="btn-submit" data-ru="📨 Записаться на прием" data-uz="📨 Qabulga yozilish">📨 Записаться на прием</button>
-            <div id="formMessage" class="form-message"></div>
-        </form>
-    </div>
 </div>
 
-<div class="footer"><div class="container"><p>Nafis Med — современная клиника. Адрес: Ташкент, ул. Навои 15 | Пн–Сб 9:00–19:00</p><p>📱 Отсканируйте QR-код — всегда актуальные цены и запись</p></div></div>
+<div class="footer"><div class="container"><p>Nafis Med — современная клиника. Адрес: Ташкент, ул. Фаровон хаёт 134 | Пн–Сб 9:00–17:00</p><p>📱 Отсканируйте QR-код — всегда актуальные цены и запись</p></div></div>
 
 <!-- Админ-панель -->
 <div id="adminPanel" class="admin-panel"><div class="admin-header"><h2>📋 Записи пациентов</h2><button onclick="closeAdminPanel()">✖ Закрыть</button></div><div id="adminRecords"></div><div class="admin-buttons"><button onclick="exportAppointments()">📥 Скачать CSV</button><button onclick="clearAllAppointments()">🗑 Очистить все</button><button onclick="sendManualReport()">📧 Отправить отчет сейчас</button></div></div>
